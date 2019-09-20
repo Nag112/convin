@@ -1,0 +1,12 @@
+.btn{
+    border: 1px solid;
+    border-radius: 50px;
+    color: white;
+    font-family:lato;
+    min-width: 40px;
+    margin:auto; 
+}
+.btn:hover{
+    border:none;  
+    color:white;  
+}
