@@ -8,3 +8,26 @@ body{
     height:40vh;
     margin:30vh auto;
 }
+.input
+{
+    width:90%;
+    margin:auto;    
+    height:2.4rem;
+    border:1px solid gray;
+    border-radius: 50px;
+}
+.input:hover:focus:active{
+    border:none !important;
+}
+.btn{
+    border: 1px solid;
+    border-radius: 50px;
+    color: white;
+    font-family:lato;
+    min-width: 40px;
+    margin:auto 10px; 
+}
+.btn:hover{
+    border:none;  
+    color:white;  
+}
