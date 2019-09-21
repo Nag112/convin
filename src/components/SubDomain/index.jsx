@@ -24,6 +24,7 @@ export default class SubDomain extends Component
             if(data.available)
             { 
                message='Domain is available';
+               localStorage.setItem('domain',this.state.input);
               this.setState({registerVisible:true})
             }
             else            
@@ -43,9 +44,10 @@ export default class SubDomain extends Component
     handleRegister=(e)=>
     {
         e.preventDefault();
-        console.log(this.state.input);
-        localStorage.setItem('domain',this.state.input);
-        axios.post('https://app.api.convin.ai/domains/',{name:this.state.input})        
+        
+       let domain = localStorage.getItem('domain')
+       
+        axios.post('https://app.api.convin.ai/domains/',{name:domain})        
         .then(res=>{
             const {data} = res
         if(data.status==="success")
