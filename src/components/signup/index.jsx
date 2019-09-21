@@ -47,7 +47,7 @@ export default class Signup extends Component
                 this.setState({text:" "},console.log('state',this.state))                               
                 let domain = localStorage.getItem('domain');
                 console.log(domain)
-                axios.post(`https://${domain}.api.convin.ai/persons/create_admin`,this.state)
+                axios.post(`https://${domain}.api.convin.ai/persons/create_admin/`,this.state)
                 .then(res=>{console.log('data',res);this.props.history.push('/login')})
                 .catch(err=>console.log('error',err))
             }

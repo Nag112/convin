@@ -15,7 +15,9 @@ export default class SubDomain extends Component
     handleButton = e=>
     {    
         e.preventDefault();
-        localStorage.setItem('domain',this.state.input);
+        console.log(this.state.input);
+        let input = this.state.input
+        localStorage.setItem('domain',input);
       if(this.state.input!==''&&this.state.input!==' ')
       { axios.get('https://app.api.convin.ai/domains/availability',{params:{name:this.state.input}})        
         .then(res=>{            
