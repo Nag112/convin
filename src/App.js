@@ -3,15 +3,15 @@ import './App.css';
 import {Switch,BrowserRouter as Router,Route,Redirect} from'react-router-dom';
 import SubDomain from './components/SubDomain';
 import Signup from './components/signup';
-
+import Login from './components/login';
+import Graphs from './components/graphs'
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  let loggedIn = JSON.parse(localStorage.getItem("user"));
-
+  let loggedIn = JSON.parse(localStorage.getItem('token'));
   return (
     <Route
       {...rest}
       render={props =>
-        loggedIn && loggedIn.token && loggedIn.user ? (
+        loggedIn ? (
           <Component {...props} />
         ) : (
           <Redirect to="/" />
@@ -26,11 +26,11 @@ class App extends React.Component
   {
     return <Router>
      <Suspense fallback={<SubDomain/>}>
-        <Switch>
-          <Route path='/' component={SubDomain}/>
-          <PrivateRoute exact path="/login"/>
+        <Switch>          
+          <Route exact path="/login" component={Login}/>
           <Route exact path="/signup" component={Signup}/>
-          <PrivateRoute exact path="/graphs"/>
+          <Route exact path="/graphs" component={Graphs}/>
+          <Route path='/' component={SubDomain}/>
         </Switch>
      </Suspense>
     </Router>

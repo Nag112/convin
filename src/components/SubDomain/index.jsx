@@ -40,15 +40,17 @@ export default class SubDomain extends Component
         this.setState({text:"Please enter a domain name to search"});
     }
 }
-    handleRegister=()=>
+    handleRegister=(e)=>
     {
-        axios.post('https://app.api.convin.ai/domains',{name:this.state.input})        
+        e.preventDefault();
+        console.log(this.state.input);
+        localStorage.setItem('domain',this.state.input);
+        axios.post('https://app.api.convin.ai/domains/',{name:this.state.input})        
         .then(res=>{
             const {data} = res
         if(data.status==="success")
         {
-            this.setState({text:data.status});
-            localStorage.setItem('domain',this.state.input);
+            this.setState({text:data.status});            
             this.props.history.push('/signup');
         }
         else
