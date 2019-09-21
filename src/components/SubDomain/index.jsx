@@ -15,18 +15,16 @@ export default class SubDomain extends Component
     handleButton = e=>
     {    
         e.preventDefault();
+        localStorage.setItem('domain',this.state.input);
       if(this.state.input!==''&&this.state.input!==' ')
       { axios.get('https://app.api.convin.ai/domains/availability',{params:{name:this.state.input}})        
         .then(res=>{            
            const {data} = res;
             console.log(data.status);
             let message;
-            if(data.available)
-            { 
-               message='Domain is available';
-               localStorage.setItem('domain',this.state.input);
-              this.setState({registerVisible:true})
-            }
+            if(data.available)             
+              {message='Domain is available'          
+              this.setState({registerVisible:true})  }          
             else            
             {
                 message='Oops! domain not available';
@@ -43,10 +41,9 @@ export default class SubDomain extends Component
 }
     handleRegister=(e)=>
     {
-        e.preventDefault();
-        
+        e.preventDefault();        
        let domain = localStorage.getItem('domain')
-       
+       console.log(domain)       
         axios.post('https://app.api.convin.ai/domains/',{name:domain})        
         .then(res=>{
             const {data} = res
